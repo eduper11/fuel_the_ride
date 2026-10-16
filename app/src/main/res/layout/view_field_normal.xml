@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    view_field_normal.xml — campo de datos FuelTheRide.
+
+    Dos mitades: BEBIDA (azul, izq) y COMIDA (verde, der). Cada mitad tiene un
+    "depósito" de fondo (ImageView con ClipDrawable) que se vacía de arriba a abajo
+    según se acerca la siguiente ingesta, y una cuenta atrás GRANDE encima.
+
+    Durante la alerta de 30s, esa mitad parpadea alternando la cuenta atrás y la
+    cantidad a ingerir (lo gestiona el código en FuelDashboardDataType).
+
+    Solo Views permitidas en RemoteViews: LinearLayout, FrameLayout, ImageView, TextView.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#000000">
+
+    <!-- ══ MITAD BEBIDA ══ -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <!-- Depósito (relleno azul) -->
+        <ImageView
+            android:id="@+id/iv_drink_fill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/clip_fill_blue"
+            android:scaleType="fitXY"
+            android:contentDescription="@null" />
+
+        <!-- Contenido encima -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_drink_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💧"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_drink_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--:--"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Separador -->
+    <LinearLayout
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+    <!-- ══ MITAD COMIDA ══ -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <!-- Depósito (relleno verde) -->
+        <ImageView
+            android:id="@+id/iv_eat_fill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/clip_fill_green"
+            android:scaleType="fitXY"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_eat_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍌"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_eat_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--:--"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

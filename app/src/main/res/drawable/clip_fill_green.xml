@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    clip_fill_green.xml — relleno del depósito de COMIDA.
+    Igual que el azul pero verde.
+-->
+<clip xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clipOrientation="vertical"
+    android:gravity="bottom">
+    <shape android:shape="rectangle">
+        <solid android:color="#2E7D32" />
+    </shape>
+</clip>

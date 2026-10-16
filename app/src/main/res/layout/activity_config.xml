@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_config.xml
+    Configuration screen shown in the Karoo app drawer.
+    Designed for Karoo's 480×800px touchscreen.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- ── Header ─────────────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⛽ FuelTheRide"
+            android:textColor="#FF6B35"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_auto_note"
+            android:textColor="#AAAAAA"
+            android:textSize="13sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- ── FTP section ────────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="POWER &amp; PROFILE"
+            android:textColor="#FF6B35"
+            android:textSize="11sp"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Use Karoo FTP toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/config_use_karoo_ftp"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_use_karoo_ftp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+
+        <!-- FTP hint from Karoo profile -->
+        <TextView
+            android:id="@+id/tv_karoo_ftp_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#66AA66"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <!-- Manual FTP input (hidden when using Karoo FTP) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_ftp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/config_ftp_label"
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#FF6B35"
+            app:hintTextColor="#FF6B35">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_ftp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:hint="@string/config_ftp_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ── Bottle section ─────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BOTTLE"
+            android:textColor="#FF6B35"
+            android:textSize="11sp"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Bottle size spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_bottle_size_label"
+            android:textColor="#CCCCCC"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp" />
+
+        <Spinner
+            android:id="@+id/spinner_bottle_size"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Custom bottle size (visible only when "Custom" selected) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_custom_bottle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/config_bottle_custom_label"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            app:boxStrokeColor="#FF6B35"
+            app:hintTextColor="#FF6B35">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_custom_bottle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Carbs in bottle -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_bottle_carbs"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/config_bottle_carbs_label"
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#FF6B35"
+            app:hintTextColor="#FF6B35">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_bottle_carbs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:hint="@string/config_bottle_carbs_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Nº de cargas del bidón con carbos -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nº de bidones con esa mezcla (recargas)"
+            android:layout_marginBottom="4dp"
+            app:boxStrokeColor="#FF6B35"
+            app:hintTextColor="#FF6B35">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_bottle_refills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cuántos bidones llevas con esa mezcla de carbos. Al agotar ese volumen, los siguientes tragos (agua) cuentan 0 g."
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Salts toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/config_bottle_salts_label"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_bottle_salts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- ── Pre-ride carbs ─────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ANTES DE LA ACTIVIDAD"
+            android:textColor="#FF6B35"
+            android:textSize="11sp"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carbohidratos que comiste antes de salir. Llenan el depósito y retrasan la primera toma."
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:hint="g CH previos"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_preride_carbs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="horas antes"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_preride_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- ── Food pantry ────────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COMIDA QUE LLEVAS"
+            android:textColor="#FF6B35"
+            android:textSize="11sp"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre y gramos de CH por pieza. La app irá rotando entre ellas."
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Fila comida 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="8dp"
+                android:hint="Comida 1 (ej. Gel)"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_name_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="g CH"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_carbs_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Fila comida 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="8dp"
+                android:hint="Comida 2 (ej. Guayaba)"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_name_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="g CH"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_carbs_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Fila comida 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="8dp"
+                android:hint="Comida 3 (opcional)"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_name_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="g CH"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_carbs_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Fila comida 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="32dp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="8dp"
+                android:hint="Comida 4 (opcional)"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_name_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="g CH"
+                app:boxStrokeColor="#FF6B35"
+                app:hintTextColor="#FF6B35">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_food_carbs_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- ── Save button ────────────────────────────────────────────── -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/config_save"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#FF6B35"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>

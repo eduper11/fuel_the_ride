@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    extension_info.xml — formato correcto según la documentación oficial de karoo-ext.
+
+    ⚠️  NO usar namespace app: ni xmlns aquí.
+    Los atributos son planos: id, displayName, scansDevices, typeId, graphical, etc.
+    Karoo OS parsea este XML directamente — no lo procesa como un layout Android.
+
+    Referencia: https://github.com/hammerheadnav/karoo-ext (README oficial)
+-->
+<ExtensionInfo
+    id="fueltheride"
+    displayName="@string/app_name"
+    icon="@drawable/ic_launcher"
+    scansDevices="false">
+
+    <!--
+        Campo gráfico principal: siempre visible en la pantalla de entreno.
+        Estado normal  → countdown + acumulados de hidratación y carbos.
+        Estado alerta  → texto grande "BEBE X ml / COME Y g" durante 30 segundos.
+        graphical="true" → Karoo llama a emitGraphical() con RemoteViews.
+    -->
+    <DataType
+        typeId="fuel_dashboard"
+        displayName="@string/field_fuel_dashboard"
+        description="@string/field_fuel_dashboard_desc"
+        graphical="true"
+        icon="@drawable/ic_launcher" />
+
+</ExtensionInfo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FuelTheRide</string>
+
+    <!-- Data field labels shown in Karoo field picker -->
+    <string name="field_fuel_action">Fuel Action</string>
+    <string name="field_fuel_action_desc">Shows drink/eat alerts during 30s window with sound</string>
+    <string name="field_carbs_consumed">Carbs (g)</string>
+    <string name="field_carbs_consumed_desc">Cumulative carbohydrate intake this ride (g)</string>
+    <string name="field_hydration_consumed">Water (ml)</string>
+    <string name="field_hydration_consumed_desc">Cumulative hydration intake this ride (ml)</string>
+    <string name="field_next_fuel">Next Fuel (min)</string>
+    <string name="field_next_fuel_desc">Minutes until next fueling alert</string>
+    <string name="field_fuel_dashboard">⛽ FuelTheRide</string>
+    <string name="field_fuel_dashboard_desc">Countdown + alertas de bebida y comida con sonido. Muestra 30s la acción y vuelve al panel.</string>
+
+    <!-- Config screen labels -->
+    <string name="config_title">FuelTheRide Setup</string>
+    <string name="config_ftp_label">Your FTP (watts)</string>
+    <string name="config_ftp_hint">e.g. 250</string>
+    <string name="config_weight_label">Weight (kg)</string>
+    <string name="config_weight_hint">e.g. 70</string>
+    <string name="config_bottle_size_label">Bottle size</string>
+    <string name="config_bottle_custom_label">Custom bottle size (ml)</string>
+    <string name="config_bottle_carbs_label">Carbs in bottle (g total)</string>
+    <string name="config_bottle_carbs_hint">0 if plain water</string>
+    <string name="config_bottle_salts_label">Contains electrolytes / salts</string>
+    <string name="config_solid_carbs_label">Carbs per solid intake (g per bar/gel)</string>
+    <string name="config_solid_carbs_hint">e.g. 30</string>
+    <string name="config_drink_serving_label">Drink serving size (ml)</string>
+    <string name="config_auto_note">Tu peso y tu FTP se leen del perfil del Karoo. Los avisos de beber y comer se calculan solos según la energía (kJ) que gastas. Cuando toca comer, la app te dice qué pieza de las que llevas tomar. Aprieta más y los avisos llegarán antes.</string>
+    <string name="config_save">Save &amp; close</string>
+    <string name="config_saved">Settings saved!</string>
+    <string name="config_use_karoo_ftp">Use FTP from Karoo profile</string>
+
+    <!-- Alert messages -->
+    <string name="alert_drink">Drink %1$d ml</string>
+    <string name="alert_eat">Eat %1$d g carbs</string>
+    <string name="alert_drink_eat">Drink %1$d ml + Eat %2$d g</string>
+</resources>
