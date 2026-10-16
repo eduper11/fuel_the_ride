@@ -1,264 +1,264 @@
 # FuelTheRide
 
-FuelTheRide es una extensión para el ciclocomputador Hammerhead Karoo. Durante la ruta te avisa de cuándo beber y cuándo comer, según la potencia que estás moviendo, tu FTP y lo que llevas encima.
+FuelTheRide is an extension for the Hammerhead Karoo cycling computer. On a ride it tells you when to drink and when to eat, based on the power you are putting out, your FTP, and what you are carrying.
 
-No usa un reloj fijo del tipo «bebe cada 15 minutos». Mira el esfuerzo real: si aprietas, el aviso llega antes; si aflojas, se alarga. Cada aviso suena por el altavoz del Karoo y se queda 30 segundos en pantalla.
-
----
-
-## Qué necesitas para que funcione
-
-Sin estas cuatro cosas la extensión se abre, pero los avisos no salen o salen mal.
-
-1. **Un potenciómetro emparejado y conectado.** La app solo mira los vatios. Sin potencia no hay gasto, no hay cuenta atrás y no hay avisos. La frecuencia cardíaca no sirve de sustituto.
-2. **El FTP en el perfil del Karoo**, o un FTP escrito a mano dentro de FuelTheRide. El FTP es la referencia de intensidad. Si vale 0, la app no avisa.
-3. **El peso en el perfil del Karoo.** No se pide dentro de la extensión. Sirve para calcular cuánto sudas. Si el perfil no trae un peso usable, la app usa 70 kg.
-4. **El campo ⛽ FuelTheRide en la página de ruta que tienes a la vista.** El cálculo avanza mientras ese campo está en pantalla. Si pasas a otra página que no lo lleva, la cuenta atrás y los avisos se detienen hasta que vuelves.
-
-Sube el volumen del Karoo antes de salir. El pitido sale por el altavoz interno.
-
-Los ajustes se leen **al empezar a grabar**. Si los cambias con la actividad ya en marcha, entran en la siguiente salida.
+It does not use a fixed clock such as "drink every 15 minutes". It watches real effort: push harder and the alert comes sooner; ease off and it stretches out. Each alert plays through the Karoo speaker and stays on screen for 30 seconds.
 
 ---
 
-## 1. Prepara el perfil del Karoo
+## What you need for it to work
 
-Hazlo en los ajustes de ciclista del propio Karoo, antes de abrir FuelTheRide.
+Without these four things the extension still opens, but alerts never fire or fire wrong.
 
-| Dato | Para qué sirve |
+1. **A paired, connected power meter.** The app only looks at watts. No power means no expenditure, no countdown, and no alerts. Heart rate is not a substitute.
+2. **FTP in the Karoo profile**, or an FTP typed by hand inside FuelTheRide. FTP is the intensity reference. If it is 0, the app does not alert.
+3. **Weight in the Karoo profile.** The extension does not ask for it. It scales how much you sweat. If the profile has no usable weight, the app uses 70 kg.
+4. **The ⛽ FuelTheRide field on the ride page you are looking at.** The calculation advances while that field is on screen. If you swipe to a page that does not include it, the countdown and the alerts stop until you come back.
+
+Turn the Karoo volume up before you roll out. The beep comes from the internal speaker.
+
+Settings are read **when you start recording**. If you change them while a ride is already running, they apply on the next ride.
+
+---
+
+## 1. Set up the Karoo profile
+
+Do this in the Karoo rider settings, before you open FuelTheRide.
+
+| Value | What it does |
 |---|---|
-| **FTP (vatios)** | Marca si vas suave o fuerte. Misma potencia absoluta no significa lo mismo para dos personas: 200 W pueden ser rodaje para quien tiene 280 W de FTP y umbral para quien tiene 200. |
-| **Peso (kg)** | Escala la sed. Una persona más pesada suda más a la misma intensidad, así que el aviso de beber llega antes. El factor va de 0,7 (unos 49 kg o menos) a 1,4 (unos 98 kg o más), tomando 70 kg como 1,0. |
+| **FTP (watts)** | Decides whether you are riding easy or hard. The same absolute power is not the same effort for two people: 200 W can be endurance for someone with a 280 W FTP and threshold for someone with a 200 W FTP. |
+| **Weight (kg)** | Scales thirst. A heavier rider sweats more at the same intensity, so the drink alert comes sooner. The factor runs from 0.7 (about 49 kg or less) to 1.4 (about 98 kg or more), with 70 kg as 1.0. |
 
-En la pantalla de FuelTheRide, si el Karoo ya tiene perfil, verás una línea verde del estilo `Perfil Karoo · FTP: 250 W · Peso: 72 kg`. Comprueba que esos dos números son los tuyos. Si el FTP sale a 0, entra en el perfil del Karoo y ponlo, o desactiva el interruptor y escríbelo a mano.
+On the FuelTheRide screen, if the Karoo already has a profile, you will see a green line like `Perfil Karoo · FTP: 250 W · Peso: 72 kg`. Check that both numbers are yours. If FTP shows 0, set it in the Karoo profile, or turn the switch off and type it in.
 
 ---
 
-## 2. Abre FuelTheRide y configura la salida
+## 2. Open FuelTheRide and set up the ride
 
-Abre **FuelTheRide** desde el cajón de aplicaciones del Karoo (fuera de una ruta). La pantalla se desplaza. Al terminar pulsa **Save & close**. Si falta un dato obligatorio, el campo se marca en rojo y no se cierra.
+Open **FuelTheRide** from the Karoo app drawer (outside a ride). The screen scrolls. When you are done, press **Save & close**. If a required value is missing, the field turns red and the screen stays open.
 
-Lo que guardas queda para la siguiente vez. Solo cambia lo que cambie de verdad (otro bidón, otra comida, un desayuno distinto).
+What you save stays for next time. Only change what actually changed (a different bottle, different food, a different breakfast).
 
-### Potencia y perfil
+### Power and profile
 
-**Use FTP from Karoo profile** (activado por defecto).
+**Use FTP from Karoo profile** (on by default).
 
-- **Activado (recomendado).** FuelTheRide usa el FTP del perfil del Karoo. El campo para escribir vatios desaparece. Si un día actualizas el FTP en el Karoo, la extensión lo recoge sola.
-- **Desactivado.** Escribes tú el FTP en vatios, por ejemplo `250`. Tiene que ser un número entero mayor que 0. Úsalo solo si el perfil del Karoo no es el tuyo (una bici compartida, un perfil de prueba) o si quieres simular otro umbral.
+- **On (recommended).** FuelTheRide uses the FTP from the Karoo profile. The watts field disappears. If you later update FTP on the Karoo, the extension picks it up on its own.
+- **Off.** You type FTP in watts, for example `250`. It has to be a whole number greater than 0. Use this only if the Karoo profile is not yours (a shared bike, a test profile) or if you want to ride against a different threshold.
 
-Si el interruptor está activado pero el perfil trae FTP 0, la app intenta el valor manual. Si ese también está vacío, **no habrá avisos**.
+If the switch is on but the profile FTP is 0, the app falls back to the manual value. If that is empty too, **there will be no alerts**.
 
-El peso no se edita aquí. Siempre sale del perfil del Karoo.
+Weight is not edited here. It always comes from the Karoo profile.
 
-### Bidón
+### Bottle
 
-El bidón no fija cada cuántos minutos bebes. Fija **cuántos carbohidratos aporta cada trago** y **cuántos tragos de esa mezcla te quedan**.
+The bottle does not set how many minutes between drinks. It sets **how many carbohydrates each sip contributes** and **how many sips of that mix you have left**.
 
-**Bottle size.** Tamaño de un bidón.
+**Bottle size.** Size of one bottle.
 
-- `500 ml` o `750 ml` (750 es el valor por defecto).
-- `Custom`: aparece un campo para los mililitros. Tiene que ser un número; si lo dejas vacío, no deja guardar.
+- `500 ml` or `750 ml` (750 is the default).
+- `Custom`: a field appears for millilitres. It has to be a number; if you leave it empty, save is blocked.
 
-**Carbs in bottle (g total).** Gramos de carbohidrato de **un bidón lleno**, no de un trago.
+**Carbs in bottle (g total).** Carbohydrate grams in **one full bottle**, not in one sip.
 
-- `0` si es agua sola. Cada trago cuenta como hidratación y **no** suma carbohidratos. Comerás con más frecuencia, porque la comida tiene que cubrir sola el gasto.
-- Un número, por ejemplo `60`, si el bidón lleva bebida con carbohidratos (polvo, bebida deportiva, mixto). La app reparte esos gramos en todo el volumen.
+- `0` for plain water. Each sip counts as hydration and adds **no** carbohydrates. You will eat more often, because food has to cover the burn on its own.
+- A number, for example `60`, if the bottle is a carb drink (powder, sports drink, mix). The app spreads those grams across the whole volume.
 
-Ejemplo: 60 g en un bidón de 750 ml son 0,08 g por mililitro. Cada trago es de 150 ml, así que ese trago aporta unos **12 g**. Esos 12 g cuentan como carbohidrato ya tomado y **retrasan el siguiente aviso de comida**.
+Example: 60 g in a 750 ml bottle is 0.08 g per millilitre. Each sip is 150 ml, so that sip contributes about **12 g**. Those 12 g count as carbohydrate already taken and **delay the next eat alert**.
 
-**Nº de bidones con esa mezcla (recargas).** Cuántos bidones llevas con esa misma mezcla.
+**Nº de bidones con esa mezcla (recargas).** How many bottles you are carrying with that same mix.
 
-- `1` (por defecto): solo el bidón que llevas ahora. Al vaciarlo, los tragos siguientes cuentan como agua (0 g).
-- `2`: un bidón más una recarga igual. Con 750 ml son 1 500 ml de mezcla. A 150 ml por trago, los 10 primeros tragos llevan carbohidratos y a partir de ahí el aviso de beber sigue, pero ya no suma gramos.
-- Si dejas el campo vacío, cuenta como 1. Un 0 también se guarda como 1.
+- `1` (default): only the bottle you have now. Once it is empty, later sips count as water (0 g).
+- `2`: one bottle plus one identical refill. At 750 ml that is 1,500 ml of mix. At 150 ml per sip, the first 10 sips carry carbohydrates; after that the drink alert continues, but it no longer adds grams.
+- An empty field counts as 1. A 0 is also stored as 1.
 
-Cuando se acaba la mezcla no cambia el aviso de sed. Solo cambia lo que ese trago aporta de comida. A partir de ese momento los avisos de comer se acercan, porque el bidón ya no te está cubriendo carbohidratos.
+Running out of mix does not change the thirst alert. It only changes what that sip contributes as food. From then on, eat alerts come closer together, because the bottle is no longer covering carbohydrates.
 
-**Contains electrolytes / salts.** Actívalo si el bidón lleva sales o electrolitos, para dejarlo anotado en tu configuración. **No cambia** ni la frecuencia de beber, ni los mililitros del trago, ni los gramos que cuenta la app. La sed se calcula por potencia, peso y temperatura, no por este interruptor.
+**Contains electrolytes / salts.** Turn it on if the bottle has salts or electrolytes, so your setup remembers that. It does **not** change drink frequency, sip size, or the grams the app counts. Thirst is calculated from power, weight, and temperature, not from this switch.
 
-### Antes de la actividad
+### Before the ride
 
-Sirve para el desayuno o el tentempié de antes de salir. Esos carbohidratos llenan un margen inicial: **retrasan la primera comida** y frenan un poco la subida de demanda que aparece cuando el depósito de glucógeno se va vaciando.
+This is for breakfast or the snack before you leave. Those carbohydrates fill an initial buffer: they **delay the first eat alert** and slow the rise in demand that appears as muscle glycogen runs down.
 
-**g CH previos.** Gramos que comiste antes de montar. Vacío o 0 = sales sin ese margen y el primer aviso de comida llega antes.
+**g CH previos.** Grams you ate before getting on the bike. Empty or 0 means you start with no buffer, and the first eat alert comes sooner.
 
-**horas antes.** Cuánto tiempo ha pasado desde esa comida hasta que das a grabar. Admite decimales (`1.5`). Si lo dejas vacío, la app usa **1 hora**.
+**horas antes.** How long ago that meal was when you press record. Decimals are allowed (`1.5`). If you leave it empty, the app uses **1 hour**.
 
-No cuenta el total entero. Cuanto más tiempo ha pasado, menos queda disponible. La cuenta usa una vida media de 3 horas y no mira más allá de 6 horas (si pones 8, se trata como 6):
+It does not count the full amount. The longer ago you ate, the less is still available. The math uses a 3-hour half-life and ignores anything past 6 hours (if you enter 8, it is treated as 6):
 
-| Horas antes | Parte que aún cuenta |
+| Hours before | Share that still counts |
 |---|---|
-| 0 (acabas de comer) | 100 % |
-| 0,5 | ~89 % |
-| 1 | ~79 % |
-| 2 | ~63 % |
-| 3 | 50 % |
-| 4 | ~40 % |
-| 6 o más | 25 % |
+| 0 (you just ate) | 100% |
+| 0.5 | ~89% |
+| 1 | ~79% |
+| 2 | ~63% |
+| 3 | 50% |
+| 4 | ~40% |
+| 6 or more | 25% |
 
-Ejemplo: 80 g hace 1 hora dejan unos 63 g de margen. 80 g hace 3 horas dejan 40 g. Ese margen se gasta al ritmo de la ruta; no es una comida que la app te vaya a recordar.
+Example: 80 g one hour ago leaves about 63 g of buffer. 80 g three hours ago leaves 40 g. That buffer is spent at the pace of the ride. The app will not remind you of that meal.
 
-### Comida que llevas
+### Food you are carrying
 
-Hasta cuatro piezas. En cada fila: el **nombre** (lo que quieres leer en el aviso) y los **gramos de carbohidrato de una pieza**, no de todo el bolsillo.
+Up to four items. Each row is the **name** (what you want to read on the alert) and the **carbohydrate grams of one piece**, not of the whole pocket.
 
-La app **rota en orden**. El primer aviso de comida pide la pieza 1, el segundo la pieza 2, y al acabar la lista vuelve a la primera. El aviso enseña el nombre y los gramos, por ejemplo `Gel 30g` o `Barrita 40g`.
+The app **rotates in order**. The first eat alert asks for item 1, the second for item 2, and after the last item it returns to the first. The alert shows the name and the grams, for example `Gel 30g` or `Barrita 40g`.
 
-Reglas al guardar:
+Rules when you save:
 
-- Una fila vacía se ignora. Puedes dejar la 3 y la 4 en blanco.
-- Hace falta **al menos una** fila con nombre y con gramos mayores que 0. Si no, no deja guardar.
-- Si escribes nombre pero dejas los gramos a 0 o vacíos, esa fila no cuenta.
-- El nombre no debe llevar `:` ni `;`. Esos dos caracteres se quitan al guardar.
+- An empty row is ignored. You can leave rows 3 and 4 blank.
+- You need **at least one** row with a name and with grams greater than 0. Otherwise save is blocked.
+- A name with grams left at 0 or empty does not count.
+- The name should not contain `:` or `;`. Those two characters are stripped when you save.
 
-Qué implica el tamaño de la pieza: el aviso salta cuando el carbohidrato que te falta alcanza **los gramos de la siguiente pieza**. Un gel de 25 g se pide antes y más a menudo que una barrita de 45 g. No elijas los gramos «a ojo de calorías»: pon los de carbohidrato del envoltorio de **una** unidad.
+What the piece size means: the alert fires when the carbohydrate you still owe reaches **the grams of the next piece**. A 25 g gel is requested sooner, and more often, than a 45 g bar. Do not guess grams from calories. Use the carbohydrate number on the wrapper of **one** unit.
 
-Si no configuras nada, la despensa por defecto es un **Gel de 30 g**.
+If you never set this up, the default pantry is a **Gel of 30 g**.
 
-La primera comida de la ruta llega un poco antes que las siguientes: al dar a grabar la app ya considera medio pieza gastada, para no esperar a acumular un gel entero desde cero. Las tomas de después sí esperan la pieza completa. Los carbohidratos que bebas en el bidón descuentan de esa cuenta y separan más las comidas.
+The first eat of the ride comes a little sooner than the later ones: when you start recording, the app already treats half a piece as spent, so you do not wait to build a full gel of deficit from zero. Later intakes wait for the full piece. Carbohydrates you drink from the bottle are subtracted from that debt and space the meals further apart.
 
-### Guardar
+### Save
 
-**Save & close** cierra la app y deja la configuración lista. Verás el aviso `Settings saved!`.
+**Save & close** closes the app and stores the setup. You will see `Settings saved!`.
 
-Abre la app otra vez si quieres revisar: los campos vuelven con lo último que guardaste.
-
----
-
-## 3. Pon el campo en la pantalla de ruta
-
-1. Edita el perfil de ruta del Karoo (la pantalla que usas al pedalear).
-2. Añade un campo de datos y busca la extensión **FuelTheRide**.
-3. Elige **⛽ FuelTheRide**. Es el único campo. Es gráfico y ocupa bien un espacio grande: tiene dos mitades y números grandes.
-
-En el editor de pantallas verás una **demostración corta**: una cuenta atrás de unos 8 segundos y un parpadeo de «150 ml». Eso no es el ritmo real de tu salida. Sirve para reconocer el campo. Los tiempos de verdad salen al grabar, con potencia.
-
-Déjalo en la página que miras mientras pedaleas. Si lo escondes en una página a la que no vuelves, el motor se para con ella.
+Open the app again if you want to review: the fields come back with the last values you saved.
 
 ---
 
-## 4. Durante la ruta
+## 3. Put the field on the ride screen
 
-Empieza a grabar como siempre. FuelTheRide arranca solo. No hay que abrir la app en marcha.
+1. Edit the Karoo ride profile (the screen you use while pedaling).
+2. Add a data field and find the **FuelTheRide** extension.
+3. Choose **⛽ FuelTheRide**. It is the only field. It is graphical and works best in a large slot: two halves and large numbers.
 
-Hasta que das la primera pedalada con potencia, las dos mitades muestran `--:--`. En ese momento aún no hay esfuerzo que medir.
+In the screen editor you will see a **short demo**: a countdown of about 8 seconds and a blink of "150 ml". That is not the real timing of your ride. It is there so you can recognize the field. Real timing appears once you are recording, with power.
 
-### Las dos mitades
+Leave it on the page you look at while you ride. If you hide it on a page you never return to, the engine stops with it.
 
-| Mitad | Qué es |
+---
+
+## 4. On the ride
+
+Start recording as usual. FuelTheRide starts on its own. You do not open the app mid-ride.
+
+Until you pedal with power for the first time, both halves show `--:--`. There is nothing to measure yet.
+
+### The two halves
+
+| Half | What it is |
 |---|---|
-| **Izquierda, azul, 💧** | Bebida. La barra se vacía de arriba abajo según se acerca el siguiente trago. El número grande es la cuenta atrás `M:SS`. |
-| **Derecha, verde, 🍌** | Comida. Igual, con la cuenta atrás hasta la siguiente pieza. |
+| **Left, blue, 💧** | Drink. The bar drains from the top as the next sip gets closer. The large number is the countdown `M:SS`. |
+| **Right, green, 🍌** | Food. The same, with the countdown to the next piece. |
 
-La cuenta atrás no es un temporizador fijo. Se recalcula con el ritmo reciente. Si entras en un puerto, el número baja más rápido. Si el ritmo cae, se alarga. Puede moverse sin que haya pasado un segundo «de reloj» en la comida, porque ha cambiado la demanda.
+The countdown is not a fixed timer. It is recalculated from recent pace. Hit a climb and the number drops faster. Ease off and it stretches. It can move even though a clock second has not passed, because demand changed.
 
-### El aviso
+### The alert
 
-Cuando toca ingerir:
+When it is time to take something:
 
-- Suena un pitido por el altavoz del Karoo.
-- Esa mitad **parpadea 30 segundos**, alternando lo que tienes que tomar y la cuenta atrás del siguiente.
-- La barra de esa mitad se vuelve a llenar en ese instante, porque la app ya da el trago o la pieza por tomados.
+- A beep plays through the Karoo speaker.
+- That half **blinks for 30 seconds**, alternating what to take and the countdown to the next one.
+- The bar on that half fills back up immediately, because the app already counts the sip or the piece as taken.
 
-| Qué toca | Qué parpadea | Cómo suena |
+| What is due | What blinks | How it sounds |
 |---|---|---|
-| Solo beber | `150 ml` en la mitad azul | Dos tonos que suben, cortos |
-| Solo comer | El nombre y los gramos, por ejemplo `Gel 30g`, en la mitad verde | Tres tonos que suben |
-| Beber y comer a la vez | Las dos mitades a la vez | Primero la melodía de beber, una pausa, y luego la de comer |
+| Drink only | `150 ml` on the blue half | Two short rising tones |
+| Eat only | The name and the grams, for example `Gel 30g`, on the green half | Three rising tones |
+| Drink and eat together | Both halves at once | The drink melody, a pause, then the eat melody |
 
-A los 30 segundos vuelve la cuenta atrás normal. No hay que pulsar nada para confirmar. **La app no comprueba si has bebido o comido de verdad.** En el momento del aviso ya suma esos 150 ml y, si toca, esos gramos. Si ignoras el aviso, el siguiente se calcula como si lo hubieras seguido. Si bebes o comes por tu cuenta entre avisos, la app no lo sabe y no lo descuenta.
+After 30 seconds the normal countdown returns. You do not tap anything to confirm. **The app does not check whether you actually drank or ate.** The moment the alert fires, it already adds those 150 ml and, if it is an eat alert, those grams. If you ignore the alert, the next one is calculated as if you had followed it. If you drink or eat on your own between alerts, the app does not know and does not subtract it.
 
-El trago es siempre **150 ml**. No se configura. Lo que cambia es **cuándo** llega: más calor, más peso o más intensidad acortan el hueco entre tragos.
+The sip is always **150 ml**. You cannot configure it. What changes is **when** it arrives: more heat, more weight, or more intensity shortens the gap between sips.
 
-### Pausa y bajadas
+### Pause and descents
 
-- **Pausa.** El tiempo, la energía y las cuentas atrás se congelan. Al reanudar siguen desde donde estaban. Los ajustes no se releen.
-- **Dejas de pedalear** (bajada, cruce, rueda parada) **después** de haber pedaleado ya. La demanda no cae a cero. El cuerpo sigue gastando, así que la cuenta atrás sigue, con un mínimo de unos 30 g/h de carbohidratos y unos 450 ml/h de bebida (ajustados por el peso y por lo que ya llevas gastado). `--:--` solo sale antes de la primera pedalada, o si no hay FTP o no hay potencia.
-- **Paras la grabación.** Los contadores de esa salida se reinician en la siguiente. La configuración (bidón, comida, FTP) se conserva.
+- **Pause.** Time, energy, and countdowns freeze. When you resume, they continue from where they were. Settings are not re-read.
+- **You stop pedaling** (a descent, a junction, a stopped wheel) **after** you have already pedaled. Demand does not drop to zero. The body is still spending, so the countdown continues, with a floor of about 30 g/h of carbohydrate and about 450 ml/h of fluid (adjusted for weight and for what you have already burned). `--:--` only appears before the first pedal stroke, or if there is no FTP or no power.
+- **You stop the recording.** That ride's counters reset on the next one. The setup (bottle, food, FTP) is kept.
 
-### Temperatura
+### Temperature
 
-Si el Karoo está dando temperatura ambiente, el calor sube la sed y el frío la baja un poco. Referencia: 20 °C no cambia nada. Cada grado por encima suma aproximadamente un 4,5 %, con un tope de 1,75 (mucho calor) y un suelo de 0,85 (frío). Si no hay temperatura, la app asume 20 °C y no inventa un extra.
+If the Karoo is reporting ambient temperature, heat raises thirst and cold lowers it a little. Reference: 20 °C changes nothing. Each degree above that adds about 4.5%, with a ceiling of 1.75 (very hot) and a floor of 0.85 (cold). If there is no temperature, the app assumes 20 °C and does not invent an extra.
 
-Ejemplo orientativo, 70 kg, rodando fuerte (cerca del FTP): unos 850 ml/h a 20 °C (un trago de 150 ml cada 10–11 minutos) y unos 1 230 ml/h a 30 °C (un trago cada 7 minutos, más o menos).
+Rough example, 70 kg, riding hard (near FTP): about 850 ml/h at 20 °C (a 150 ml sip every 10–11 minutes) and about 1,230 ml/h at 30 °C (a sip every 7 minutes or so).
 
 ---
 
-## Cómo decide los avisos
+## How alerts are decided
 
-Así puedes prever qué va a hacer cada ajuste, sin tocar nada «a ver qué pasa».
+This is so you can predict what each setting will do, without changing things to see what happens.
 
-La intensidad no es el vatio de este segundo (baila demasiado) ni solo la media de toda la salida (diluye el puerto en el que estás). Usa una **potencia efectiva**:
+Intensity is not the watt of this second (it jumps around) and not only the average of the whole ride (that washes out the climb you are on). It uses an **effective power**:
 
-- 75 % la media de los **últimos 20 minutos**
-- 25 % la media **de toda la actividad**
+- 75% the average of the **last 20 minutes**
+- 25% the average of the **whole activity**
 
-Esa potencia, comparada con tu FTP, fija los gramos y los mililitros por hora. Cada segundo se acumula un poco de «lo que ya deberías llevar tomado». Cuando lo pendiente llega a un trago (150 ml) o a la siguiente pieza de comida, salta el aviso.
+That power, compared with your FTP, sets grams and millilitres per hour. Every second adds a little of "what you should already have taken". When the amount still owed reaches one sip (150 ml) or the next food item, the alert fires.
 
-### Carbohidratos
+### Carbohydrates
 
-La demanda de partida, antes de llevar mucho tiempo encima, va así:
+Starting demand, before you have been out for a long time, looks like this:
 
-| Esfuerzo reciente | Gramos por hora al inicio |
+| Recent effort | Grams per hour at the start |
 |---|---|
-| Hasta el 55 % del FTP (suave) | 30 g/h |
-| Alrededor del 80 % del FTP | 60 g/h |
-| Al 105 % del FTP o más | 90 g/h |
+| Up to 55% of FTP (easy) | 30 g/h |
+| Around 80% of FTP | 60 g/h |
+| 105% of FTP or more | 90 g/h |
 
-Entre 55 % y 105 % la subida es continua, no a saltos.
+Between 55% and 105% the rise is continuous, not in steps.
 
-Además, según se vacía el glucógeno la demanda sube hasta un **50 %** más, sin pasar nunca de **90 g/h**. Esa subida se completa en torno a unos 1 800 kJ de trabajo (varias horas, según la potencia). Los carbohidratos de antes de salir retrasan un poco esa subida.
+As glycogen runs down, demand also rises by up to **50%**, and never goes above **90 g/h**. That rise completes around 1,800 kJ of work (several hours, depending on power). Carbohydrates eaten before the ride delay that rise a little.
 
-El techo de 90 g/h es el límite de lo que el intestino suele absorber con una mezcla de glucosa y fructosa. Aunque el gasto sea mayor, la app no te pedirá más de eso por hora.
+The 90 g/h ceiling is about as much as the gut usually absorbs from a glucose-plus-fructose mix. Even if you are burning more, the app will not ask for more than that per hour.
 
-Los carbohidratos del bidón y los de la comida van al mismo saco. Beber mezcla hace que la pieza sólida tarde más en salir.
+Bottle carbohydrates and food carbohydrates go into the same total. Drinking a mix makes the solid piece come later.
 
-### Bebida
+### Drink
 
-Pedaleando, la sed de partida va de unos **450 ml/h** (desde el 50 % del FTP hacia abajo, ya con el mínimo) hasta unos **850 ml/h** al FTP o por encima, para 70 kg y 20 °C. Luego se multiplica por el peso y por la temperatura.
+While pedaling, starting thirst runs from about **450 ml/h** (at 50% of FTP and below, already at the floor) to about **850 ml/h** at FTP or above, for 70 kg and 20 °C. That is then multiplied by weight and by temperature.
 
-El aviso es un trago de 150 ml. A 600 ml/h toca un trago cada 15 minutos. A 900 ml/h, cada 10. Esos minutos no se configuran: salen del ritmo, del peso y del calor.
-
----
-
-## Ejemplos
-
-### Salida suave, agua y un gel
-
-- FTP del perfil, bidón 750 ml, carbohidratos del bidón `0`, recargas `1`.
-- Comida 1: `Gel` / `30`.
-- Antes de salir: vacío.
-
-Beberás a un ritmo bajo (cerca de 450–600 ml/h si no hace calor) y el gel saldrá cuando se acumulen unos 30 g de demanda, la primera vez un poco antes. El agua no retrasa el gel.
-
-### Salida larga con bebida de carbohidratos y dos bidones
-
-- Bidón 750 ml, carbohidratos `60`, recargas `2`.
-- Comida 1: `Gel` / `30`. Comida 2: `Barrita` / `40`.
-- Antes: `60` g y `1` hora (cuentan unos 48 g).
-
-Los primeros 1 500 ml (dos bidones) aportan carbohidrato en cada trago de 150 ml, unos 12 g. Eso separa los avisos de gel y de barrita. Cuando se acaban los 1 500 ml, los tragos siguen pero a 0 g, y la comida se pide más seguida. El orden en pantalla será Gel, Barrita, Gel, Barrita…
-
-### Quieres comer menos a menudo
-
-Sube los gramos de cada pieza a lo que de verdad te comes de una vez (una barrita de 40 g, no dos de 20 escritas como 20). No alargues el intervalo a mano: no existe ese ajuste. Una pieza más grande espera más déficit antes de sonar.
-
-### Hace calor y sudas mucho
-
-No hace falta subir ningún intervalo. Con la temperatura del Karoo y tu peso, los 150 ml se piden antes. Revisa que el número de recargas alcanza para el agua que vas a gastar; si solo llevas un bidón de agua (`carbohidratos 0`, `recargas 1`), los avisos de beber no se paran al acabarlo: la app sigue pidiendo tragos aunque el bidón físico esté vacío. Las recargas solo distinguen mezcla con carbohidratos de agua, no calculan si te queda líquido.
+The alert is a 150 ml sip. At 600 ml/h that is a sip every 15 minutes. At 900 ml/h, every 10. Those minutes are not a setting. They come from pace, weight, and heat.
 
 ---
 
-## Lista rápida antes de dar a grabar
+## Examples
 
-- El potenciómetro marca vatios en el Karoo.
-- La línea verde de FuelTheRide muestra tu FTP y tu peso, y no un 0.
-- El tamaño del bidón es el real.
-- Los gramos del bidón son los de **un** bidón lleno. Cero si es agua.
-- Las recargas son los bidones que llevas **con esa mezcla**, no los de agua que repongas después.
-- Cada comida tiene el nombre que quieres leer y los gramos de carbohidrato de una pieza.
-- Si has comido antes de salir, están puestos los gramos y las horas. Si no, déjalo a cero.
-- Has pulsado **Save & close** después del último cambio.
-- El campo **⛽ FuelTheRide** está en la página que vas a mirar.
-- El volumen del Karoo se oye.
+### Easy ride, water, and a gel
+
+- FTP from the profile, 750 ml bottle, bottle carbohydrates `0`, refills `1`.
+- Food 1: `Gel` / `30`.
+- Before the ride: empty.
+
+You will drink at a low rate (around 450–600 ml/h if it is not hot), and the gel comes when about 30 g of demand has built up, a bit sooner the first time. Water does not delay the gel.
+
+### Long ride with a carb drink and two bottles
+
+- 750 ml bottle, carbohydrates `60`, refills `2`.
+- Food 1: `Gel` / `30`. Food 2: `Barrita` / `40`.
+- Before: `60` g and `1` hour (about 48 g still counts).
+
+The first 1,500 ml (two bottles) add carbohydrate on every 150 ml sip, about 12 g. That spaces out the gel and bar alerts. After those 1,500 ml, sips continue but at 0 g, and food is requested more often. On screen the order is Gel, Barrita, Gel, Barrita…
+
+### You want to eat less often
+
+Raise the grams of each piece to what you actually eat in one go (one 40 g bar, not two 20 g pieces written as 20). You cannot stretch the interval by hand: that setting does not exist. A larger piece waits for a larger deficit before it sounds.
+
+### It is hot and you are sweating a lot
+
+You do not need to raise any interval. With the Karoo temperature and your weight, the 150 ml sip is requested sooner. Check that the refill count covers the carb mix you are carrying. If you only have one bottle of water (`carbohydrates 0`, `refills 1`), drink alerts do not stop when it is empty: the app keeps asking for sips even if the physical bottle is dry. Refills only separate carb mix from water. They do not calculate whether you still have fluid left.
+
+---
+
+## Checklist before you hit record
+
+- The power meter is showing watts on the Karoo.
+- The green FuelTheRide line shows your FTP and your weight, not a 0.
+- The bottle size is the real one.
+- Bottle grams are for **one** full bottle. Zero if it is water.
+- Refills are the bottles you are carrying **with that mix**, not the plain-water bottles you add later.
+- Each food item has the name you want to read and the carbohydrate grams of one piece.
+- If you ate before leaving, grams and hours are filled in. If you did not, leave them at zero.
+- You pressed **Save & close** after the last change.
+- The **⛽ FuelTheRide** field is on the page you will be looking at.
+- The Karoo volume is audible.
