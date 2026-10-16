@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Decode release keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "Missing Actions secret KEYSTORE_BASE64."
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.keystore"
+
+      - name: Build signed release APK
+        env:
+          GITHUB_ACTOR: ${{ secrets.PACKAGES_USER }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+          KEYSTORE_FILE: ${{ runner.temp }}/release.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version_name=$(sed -n 's/^fueltheride.versionName=//p' gradle.properties)
+          if ! printf '%s' "$version_name" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "fueltheride.versionName must be major.minor.patch, for example 1.0.1. Found: '${version_name}'."
+            exit 1
+          fi
+          tag="v${version_name}"
+          apk=$(find app/build/outputs/apk/release -name 'app-release.apk' -print -quit)
+          if [ -z "$apk" ]; then
+            echo "Signed APK not found. Check KEYSTORE_PASSWORD, KEY_ALIAS, and KEY_PASSWORD."
+            exit 1
+          fi
+          if gh release view "$tag" >/dev/null 2>&1; then
+            git fetch origin "refs/tags/${tag}:refs/tags/${tag}"
+            existing_sha=$(git rev-parse "${tag}^{commit}")
+            if [ "$existing_sha" != "${{ github.sha }}" ]; then
+              echo "Release ${tag} already exists."
+              echo "Bump fueltheride.versionName and fueltheride.versionCode in gradle.properties."
+              exit 1
+            fi
+            gh release upload "$tag" "$apk#FuelTheRide.apk" --clobber
+          else
+            gh release create "$tag" "$apk#FuelTheRide.apk" \
+              --target "${{ github.sha }}" \
+              --title "FuelTheRide $tag" \
+              --generate-notes
+          fi
